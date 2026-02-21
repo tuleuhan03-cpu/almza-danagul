@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Алмаз & Данагүл | Свадьба</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+body {
+margin:0;
+font-family:'Montserrat', sans-serif;
+text-align:center;
+color:#333;
+overflow-x:hidden;
+background:linear-gradient(135deg,#fffaf5,#fdf6e9,#ffffff);
+}
+
+/* Қазақы ою по краям */
+body::before, body::after{
+content:"❁";
+font-size:120px;
+color:rgba(212,175,55,0.08);
+position:fixed;
+top:50%;
+transform:translateY(-50%);
+pointer-events:none;
+}
+body::before{left:10px;}
+body::after{right:10px;}
+
+.hero {
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+position:relative;
+}
+
+h1 {
+font-family:'Playfair Display', serif;
+font-size:54px;
+letter-spacing:3px;
+margin:0;
+color:#b8860b;
+}
+
+.date {
+margin-top:20px;
+font-size:22px;
+}
+
+.countdown {
+margin-top:20px;
+font-size:24px;
+color:#444;
+}
+
+.button {
+margin-top:25px;
+padding:12px 30px;
+background:#d4af37;
+border:none;
+color:white;
+cursor:pointer;
+font-size:16px;
+transition:0.3s;
+border-radius:25px;
+}
+
+.button:hover {
+transform:scale(1.05);
+}
+
+/* Секция */
+.section {
+padding:80px 20px;
+background:white;
+}
+
+iframe {
+width:100%;
+height:300px;
+border:0;
+margin-top:20px;
+border-radius:10px;
+}
+
+/* Лепестки */
+.petal {
+position:fixed;
+top:-50px;
+width:20px;
+height:20px;
+background:radial-gradient(circle,#ffb6c1,#ff69b4);
+border-radius:50%;
+opacity:0.7;
+animation:fall linear infinite;
+}
+
+@keyframes fall {
+to {
+transform:translateY(110vh) rotate(360deg);
+}
+}
+
+/* Блестящие частицы */
+.sparkle {
+position:fixed;
+width:4px;
+height:4px;
+background:#d4af37;
+border-radius:50%;
+opacity:0.8;
+animation:sparkle 2s infinite alternate;
+}
+
+@keyframes sparkle {
+from {opacity:0.2;}
+to {opacity:1;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+<h1>Алмаз & Данагүл</h1>
+<div class="date">10 июля 2026 | Ақсу</div>
+<div class="countdown" id="countdown"></div>
+<button class="button" onclick="playMusic()">Включить музыку</button>
+</div>
+
+<div class="section">
+<h2>С любовью приглашаем вас</h2>
+<p>Разделить с нами самый важный день нашей жизни</p>
+<p><strong>Ресторан «Престиж»</strong></p>
+<p>Время начала будет сообщено дополнительно</p>
+
+<h3>📍 Локация</h3>
+<iframe src="https://www.google.com/maps?q=Ресторан+Престиж+Ақсу&output=embed"></iframe>
+
+<p style="margin-top:40px; color:#777;">
+Той иелері:<br>
+Серик – Рауза
+</p>
+</div>
+
+<audio id="music" loop>
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// Отсчёт
+const weddingDate = new Date("July 10, 2026 00:00:00").getTime();
+const countdown = document.getElementById("countdown");
+
+setInterval(function() {
+const now = new Date().getTime();
+const distance = weddingDate - now;
+const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+countdown.innerHTML = days + " дней до свадьбы";
+}, 1000);
+
+// Музыка
+function playMusic() {
+document.getElementById("music").play();
+}
+
+// Лепестки
+for(let i=0;i<20;i++){
+let petal=document.createElement("div");
+petal.className="petal";
+petal.style.left=Math.random()*100+"vw";
+petal.style.animationDuration=(5+Math.random()*5)+"s";
+document.body.appendChild(petal);
+}
+
+// Блёстки
+for(let i=0;i<40;i++){
+let s=document.createElement("div");
+s.className="sparkle";
+s.style.top=Math.random()*100+"vh";
+s.style.left=Math.random()*100+"vw";
+document.body.appendChild(s);
+}
+</script>
+
+</body>
+</html>

@@ -6,15 +6,17 @@
 <title>Алмаз & Данагүл</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+
 <style>
 body{
 margin:0;
 font-family:'Cormorant Garamond', serif;
+background:#f8f5ef;
+color:#5a4a42;
 overflow-x:hidden;
-background:#000;
 }
 
-/* Видео блок */
+/* ===== VIDEO HERO ===== */
 .hero{
 position:relative;
 height:100vh;
@@ -27,7 +29,6 @@ height:100%;
 object-fit:cover;
 }
 
-/* Затемнение */
 .overlay{
 position:absolute;
 top:0;
@@ -37,33 +38,86 @@ bottom:0;
 background:linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6));
 }
 
-/* Текст */
-.hero-text h1{
-font-family:'Great Vibes', cursive;
-font-size:54px;
-margin:0;
-letter-spacing:2px;
+.hero-text{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+color:white;
+text-align:center;
+animation:fadeIn 3s ease;
 }
 
 .hero-text h1{
-font-family:'Playfair Display', serif;
-font-size:42px;
+font-family:'Great Vibes', cursive;
+font-size:60px;
 margin:0;
 }
 
 .hero-text p{
+font-size:20px;
 margin-top:10px;
-font-size:18px;
-letter-spacing:2px;
 }
 
-/* Анимация текста */
 @keyframes fadeIn{
 from{opacity:0; transform:translate(-50%,-40%);}
 to{opacity:1; transform:translate(-50%,-50%);}
 }
 
-/* Лепестки */
+/* ===== CONTENT ===== */
+.container{
+max-width:600px;
+margin:auto;
+padding:60px 20px;
+text-align:center;
+}
+
+.block{
+background:white;
+margin:30px 0;
+padding:35px 25px;
+border-radius:25px;
+box-shadow:0 10px 30px rgba(0,0,0,0.05);
+line-height:1.7;
+font-size:18px;
+}
+
+/* ===== CALENDAR ===== */
+.calendar table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+.calendar th, .calendar td{
+padding:8px;
+}
+
+.highlight{
+background:#b48a5a;
+color:white;
+border-radius:50%;
+}
+
+/* ===== MUSIC BUTTON ===== */
+.music-btn{
+position:fixed;
+bottom:20px;
+right:20px;
+width:60px;
+height:60px;
+background:#b48a5a;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-size:24px;
+cursor:pointer;
+box-shadow:0 5px 20px rgba(0,0,0,0.2);
+}
+
+/* ===== FLOWERS ===== */
 .petal{
 position:absolute;
 top:-50px;
@@ -80,44 +134,82 @@ to{
 transform:translateY(110vh) rotate(360deg);
 }
 }
-
-/* Золотые блёстки */
-.sparkle{
-position:absolute;
-width:4px;
-height:4px;
-background:#ffd700;
-border-radius:50%;
-animation:blink 2s infinite alternate;
-}
-
-@keyframes blink{
-from{opacity:0.2;}
-to{opacity:1;}
-}
 </style>
 </head>
 
 <body>
 
+<!-- VIDEO -->
 <div class="hero">
-
 <video autoplay muted loop playsinline>
 <source src="video.mp4" type="video/mp4">
 </video>
-
 <div class="overlay"></div>
-
 <div class="hero-text">
 <h1>Алмаз & Данагүл</h1>
-<p>10.07.2026 •   Үйлену той</p>
+<p>10.07.2026</p>
+</div>
+</div>
+
+<!-- TEXT BLOCK -->
+<div class="container">
+
+<div class="block">
+<b>Құрметті ағайын-туыс, құда-жекжат, дос-жаран!</b><br><br>
+Сіздерді біздің отбасымызда өтетін қуанышты тойымыздың құрметті қонағы болуға шын жүректен шақырамыз.<br><br>
+Ақ дастархан жайылып, ән мен күй шырқалатын мерекелік кешімізге келіп, қуанышымызды бірге бөліссеңіздер екен дейміз.
+</div>
+
+<div class="block">
+<h2>Той күні</h2>
+<div class="calendar">
+<table>
+<tr>
+<th>Дс</th><th>Сс</th><th>Ср</th><th>Бс</th><th>Жм</th><th>Сб</th><th>Жс</th>
+</tr>
+<tr>
+<td></td><td></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+</tr>
+<tr>
+<td>6</td><td>7</td><td>8</td><td>9</td><td class="highlight">10</td><td>11</td><td>12</td>
+</tr>
+</table>
+</div>
+</div>
+
+<div class="block">
+<h2>Мекенжай</h2>
+Ақсу қаласы<br>
+Ресторан «Престиж»
+</div>
+
+<div class="block">
+Той иелері: Серик – Рауза
 </div>
 
 </div>
+
+<!-- MUSIC -->
+<audio id="music" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="music-btn" onclick="toggleMusic()">🎵</div>
 
 <script>
+let playing=false;
+function toggleMusic(){
+let music=document.getElementById("music");
+if(!playing){
+music.play();
+playing=true;
+}else{
+music.pause();
+playing=false;
+}
+}
 
-/* Лепестки */
+/* FLOWERS */
 for(let i=0;i<30;i++){
 let petal=document.createElement("div");
 petal.className="petal";
@@ -125,16 +217,6 @@ petal.style.left=Math.random()*100+"vw";
 petal.style.animationDuration=(5+Math.random()*5)+"s";
 document.querySelector(".hero").appendChild(petal);
 }
-
-/* Блёстки */
-for(let i=0;i<40;i++){
-let s=document.createElement("div");
-s.className="sparkle";
-s.style.top=Math.random()*100+"vh";
-s.style.left=Math.random()*100+"vw";
-document.querySelector(".hero").appendChild(s);
-}
-
 </script>
 
 </body>

@@ -11,16 +11,14 @@
 body{
 margin:0;
 font-family:'Montserrat', sans-serif;
-background:#f8f5ef;
-color:#5a4a42;
-text-align:center;
 overflow-x:hidden;
+background:#000;
 }
 
-/* Видео сверху */
+/* Видео блок */
 .hero{
 position:relative;
-height:60vh;
+height:100vh;
 overflow:hidden;
 }
 
@@ -30,82 +28,52 @@ height:100%;
 object-fit:cover;
 }
 
+/* Затемнение */
 .overlay{
 position:absolute;
 top:0;
 left:0;
 right:0;
 bottom:0;
-background:rgba(0,0,0,0.3);
+background:linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6));
 }
 
+/* Текст */
 .hero-text{
 position:absolute;
 top:50%;
 left:50%;
 transform:translate(-50%,-50%);
 color:white;
+text-align:center;
+animation:fadeIn 3s ease;
+}
+
+.hero-text h1{
 font-family:'Playfair Display', serif;
-font-size:32px;
+font-size:42px;
+margin:0;
 }
 
-/* Контейнер */
-.container{
-max-width:480px;
-margin:auto;
-padding:40px 20px;
+.hero-text p{
+margin-top:10px;
+font-size:18px;
+letter-spacing:2px;
 }
 
-/* Блоки */
-.block{
-background:white;
-margin:30px 0;
-padding:30px 20px;
-border-radius:20px;
-box-shadow:0 10px 30px rgba(0,0,0,0.05);
+/* Анимация текста */
+@keyframes fadeIn{
+from{opacity:0; transform:translate(-50%,-40%);}
+to{opacity:1; transform:translate(-50%,-50%);}
 }
 
-/* Календарь */
-.calendar table{
-width:100%;
-border-collapse:collapse;
-}
-
-.calendar td, .calendar th{
-padding:8px;
-}
-
-.highlight{
-background:#b48a5a;
-color:white;
-border-radius:50%;
-}
-
-/* Музыка иконка */
-.music-btn{
-position:fixed;
-bottom:20px;
-right:20px;
-width:55px;
-height:55px;
-background:#b48a5a;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-color:white;
-font-size:22px;
-cursor:pointer;
-box-shadow:0 5px 15px rgba(0,0,0,0.2);
-}
-
-/* Анимированные цветы */
-.flower{
-position:fixed;
+/* Лепестки */
+.petal{
+position:absolute;
 top:-50px;
-width:25px;
-height:25px;
-background:radial-gradient(circle,#f7c8d8,#f3a6c1);
+width:15px;
+height:15px;
+background:radial-gradient(circle,#ffd6e8,#ff9cc2);
 border-radius:50%;
 opacity:0.7;
 animation:fall linear infinite;
@@ -116,103 +84,61 @@ to{
 transform:translateY(110vh) rotate(360deg);
 }
 }
+
+/* Золотые блёстки */
+.sparkle{
+position:absolute;
+width:4px;
+height:4px;
+background:#ffd700;
+border-radius:50%;
+animation:blink 2s infinite alternate;
+}
+
+@keyframes blink{
+from{opacity:0.2;}
+to{opacity:1;}
+}
 </style>
 </head>
 
 <body>
 
-<!-- Видео блок -->
 <div class="hero">
+
 <video autoplay muted loop playsinline>
 <source src="video.mp4" type="video/mp4">
 </video>
+
 <div class="overlay"></div>
+
 <div class="hero-text">
-Алмаз & Данагүл<br>
-10.07.2026 | Ақсу
-</div>
-</div>
-
-<div class="container">
-
-<div class="block">
-<h2>Құрметті қонақтар!</h2>
-Сіздерді біздің үйлену тойымызға шақырамыз!
-</div>
-
-<div class="block">
-<h2>Той күні</h2>
-
-<div class="calendar">
-<table>
-<tr>
-<th>Дс</th><th>Сс</th><th>Ср</th><th>Бс</th><th>Жм</th><th>Сб</th><th>Жс</th>
-</tr>
-<tr>
-<td></td><td></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
-</tr>
-<tr>
-<td>6</td><td>7</td><td>8</td><td>9</td><td class="highlight">10</td><td>11</td><td>12</td>
-</tr>
-<tr>
-<td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td>
-</tr>
-</table>
+<h1>Алмаз & Данагүл</h1>
+<p>10.07.2026 • Ақсу</p>
 </div>
 
 </div>
-
-<div class="block">
-<h2>Мекенжай</h2>
-Ақсу қаласы<br>
-Ресторан «Престиж»
-</div>
-
-<div class="block">
-<h2>Қатысуыңызды растаңыз</h2>
-<input type="text" placeholder="Атыңыз" style="width:90%;padding:10px;">
-<br><br>
-<label><input type="radio" name="rsvp"> Әрине, келемін</label><br>
-<label><input type="radio" name="rsvp"> Келе алмаймын</label><br>
-<label><input type="radio" name="rsvp"> Жұбайыммен келемін</label><br>
-<br>
-<button style="background:#b48a5a;color:white;border:none;padding:10px 20px;border-radius:20px;">Жауап беру</button>
-</div>
-
-<div class="block">
-Той иелері: Серик – Рауза
-</div>
-
-</div>
-
-<!-- Музыка -->
-<audio id="music" loop>
-<source src="music.mp3" type="audio/mpeg">
-</audio>
-
-<div class="music-btn" onclick="toggleMusic()">🎵</div>
 
 <script>
-let playing=false;
-function toggleMusic(){
-let music=document.getElementById("music");
-if(!playing){
-music.play();
-playing=true;
-}else{
-music.pause();
-playing=false;
-}
+
+/* Лепестки */
+for(let i=0;i<30;i++){
+let petal=document.createElement("div");
+petal.className="petal";
+petal.style.left=Math.random()*100+"vw";
+petal.style.animationDuration=(5+Math.random()*5)+"s";
+document.querySelector(".hero").appendChild(petal);
 }
 
-/* Живые цветы */
-for(let i=0;i<25;i++){
-let flower=document.createElement("div");
-flower.className="flower";
-flower.style.left=Math.random()*100+"vw";
-flower.style.animationDuration=(5+Math.random()*5)+"s";
-document.body.appendChild(flower);
+/* Блёстки */
+for(let i=0;i<40;i++){
+let s=document.createElement("div");
+s.className="sparkle";
+s.style.top=Math.random()*100+"vh";
+s.style.left=Math.random()*100+"vw";
+document.querySelector(".hero").appendChild(s);
 }
+
 </script>
 
 </body>

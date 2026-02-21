@@ -8,15 +8,50 @@
 <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
-html{
-scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth;}
 
 body{
 margin:0;
 font-family:'Cormorant Garamond', serif;
 background:#f8f5ef;
 color:#5a4a42;
+overflow-x:hidden;
+}
+
+/* ===== VIDEO SECTION ===== */
+.hero{
+position:relative;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+overflow:hidden;
+}
+
+.hero video{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-2;
+}
+
+.hero::after{
+content:"";
+position:absolute;
+top:0;left:0;right:0;bottom:0;
+background:rgba(0,0,0,0.4);
+z-index:-1;
+}
+
+h1{
+font-family:'Parisienne', cursive;
+font-size:100px;
+margin:0;
 }
 
 .section{
@@ -28,8 +63,10 @@ align-items:center;
 text-align:center;
 padding:40px;
 opacity:0;
-transform:translateY(40px);
-transition:1s;
+transform:translateY(50px);
+transition:1.2s;
+font-size:24px;
+line-height:1.8;
 }
 
 .section.visible{
@@ -37,75 +74,101 @@ opacity:1;
 transform:translateY(0);
 }
 
-h1{
-font-family:'Parisienne', cursive;
-font-size:70px;
-margin:0;
+.box{
+background:white;
+padding:40px;
+border-radius:30px;
+box-shadow:0 15px 40px rgba(0,0,0,0.06);
+max-width:700px;
 }
 
 h2{
-font-size:32px;
-margin-bottom:20px;
+font-size:44px;
+margin-bottom:30px;
 }
 
-.next{
-position:absolute;
-bottom:20px;
-font-size:18px;
-cursor:pointer;
-color:#b48a5a;
-}
-
-/* Календарь */
+/* ===== CALENDAR ===== */
 .calendar table{
 width:100%;
-max-width:400px;
+max-width:500px;
 border-collapse:collapse;
-font-size:20px;
+font-size:28px;
 }
 
 .calendar td, .calendar th{
-padding:10px;
+padding:14px;
 }
 
 .highlight{
 background:#b48a5a;
 color:white;
 border-radius:50%;
+font-weight:bold;
 }
 
-/* Блок */
-.box{
-background:white;
-padding:30px;
-border-radius:25px;
-box-shadow:0 10px 30px rgba(0,0,0,0.05);
-max-width:600px;
-}
-
-/* Кнопка */
+/* ===== BUTTONS ===== */
 button{
 background:#b48a5a;
 color:white;
 border:none;
-padding:10px 20px;
-border-radius:20px;
+padding:16px 35px;
+border-radius:35px;
+font-size:22px;
 cursor:pointer;
-margin-top:15px;
+margin-top:20px;
+}
+
+.map-btn{
+display:inline-block;
+background:#2BB673;
+color:white;
+padding:18px 35px;
+border-radius:40px;
+text-decoration:none;
+font-size:22px;
+font-weight:bold;
+margin-top:25px;
+}
+
+/* ===== MUSIC BUTTON ===== */
+.music-btn{
+position:fixed;
+bottom:20px;
+right:20px;
+width:65px;
+height:65px;
+background:#b48a5a;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-size:28px;
+cursor:pointer;
+box-shadow:0 5px 20px rgba(0,0,0,0.2);
+}
+
+.final{
+font-size:36px;
+font-weight:600;
 }
 </style>
 </head>
 
 <body>
 
-<!-- 1 Экран -->
-<div class="section">
+<!-- VIDEO SCREEN -->
+<div class="hero">
+<video autoplay muted loop playsinline>
+<source src="video.mp4" type="video/mp4">
+</video>
+<div>
 <h1>Алмаз & Данагүл</h1>
-<p>10.07.2026</p>
-<div class="next">↓</div>
+<p style="font-size:28px;">10.07.2026</p>
+</div>
 </div>
 
-<!-- 2 Экран -->
+<!-- TEXT -->
 <div class="section">
 <div class="box">
 <h2>Құрметті ағайын-туыс, құда-жекжат, дос-жаран!</h2>
@@ -114,7 +177,7 @@ margin-top:15px;
 </div>
 </div>
 
-<!-- 3 Экран -->
+<!-- CALENDAR -->
 <div class="section">
 <h2>Той күні</h2>
 <div class="calendar">
@@ -143,177 +206,20 @@ margin-top:15px;
 </div>
 </div>
 
-<!-- 4 Экран -->
+<!-- LOCATION -->
 <div class="section">
 <div class="box">
-<h2>Мекенжай</h2><!DOCTYPE html>
-<html lang="kk">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Алмаз & Данагүл</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
-
-<style>
-html{
-scroll-behavior:smooth;
-}
-
-body{
-margin:0;
-font-family:'Cormorant Garamond', serif;
-background:#f8f5ef;
-color:#5a4a42;
-}
-
-.section{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:40px;
-opacity:0;
-transform:translateY(40px);
-transition:1s;
-}
-
-.section.visible{
-opacity:1;
-transform:translateY(0);
-}
-
-h1{
-font-family:'Parisienne', cursive;
-font-size:70px;
-margin:0;
-}
-
-h2{
-font-size:32px;
-margin-bottom:20px;
-}
-
-.next{
-position:absolute;
-bottom:20px;
-font-size:18px;
-cursor:pointer;
-color:#b48a5a;
-}
-
-/* Календарь */
-.calendar table{
-width:100%;
-max-width:400px;
-border-collapse:collapse;
-font-size:20px;
-}
-
-.calendar td, .calendar th{
-padding:10px;
-}
-
-.highlight{
-background:#b48a5a;
-color:white;
-border-radius:50%;
-}
-
-/* Блок */
-.box{
-background:white;
-padding:30px;
-border-radius:25px;
-box-shadow:0 10px 30px rgba(0,0,0,0.05);
-max-width:600px;
-}
-
-/* Кнопка */
-button{
-background:#b48a5a;
-color:white;
-border:none;
-padding:10px 20px;
-border-radius:20px;
-cursor:pointer;
-margin-top:15px;
-}
-</style>
-</head>
-
-<body>
-
-<!-- 1 Экран -->
-<div class="section">
-<h1>Алмаз & Данагүл</h1>
-<p>10.07.2026</p>
-<div class="next">↓</div>
-</div>
-
-<!-- 2 Экран -->
-<div class="section">
-<div class="box">
-<h2>Құрметті ағайын-туыс, құда-жекжат, дос-жаран!</h2>
-Сіздерді біздің отбасымызда өтетін қуанышты тойымыздың құрметті қонағы болуға шын жүректен шақырамыз.<br><br>
-Ақ дастархан жайылып, ән мен күй шырқалатын мерекелік кешімізге келіп, қуанышымызды бірге бөліссеңіздер екен дейміз.
-</div>
-</div>
-
-<!-- 3 Экран -->
-<div class="section">
-<h2>Той күні</h2>
-<div class="calendar">
-<table>
-<tr>
-<th>Дс</th><th>Сс</th><th>Ср</th><th>Бс</th><th>Жм</th><th>Сб</th><th>Жс</th>
-</tr>
-<tr>
-<td></td><td></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
-</tr>
-<tr>
-<td>6</td><td>7</td><td>8</td><td>9</td>
-<td class="highlight">10</td>
-<td>11</td><td>12</td>
-</tr>
-<tr>
-<td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td>
-</tr>
-<tr>
-<td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td>
-</tr>
-<tr>
-<td>27</td><td>28</td><td>29</td><td>30</td><td>31</td><td></td><td></td>
-</tr>
-</table>
-</div>
-</div>
-
-<!-- 4 Экран -->
-<div class="section">
-<div class="box">
-<h2>Мекенжай</h2><div style="margin-top:20px;">
-<a href="https://2gis.kz/search/Ресторан%20Престиж%20Ақсу"
-   target="_blank"
-   style="display:inline-block;
-          background:#2BB673;
-          color:white;
-          padding:15px 25px;
-          border-radius:30px;
-          text-decoration:none;
-          font-size:18px;
-          font-weight:bold;">
+<h2>Мекенжай</h2>
+Ақсу қаласы<br>
+Ресторан «Престиж»
+<br><br>
+<a href="https://2gis.kz/search/Ресторан%20Престиж%20Ақсу" target="_blank" class="map-btn">
 📍 2ГИС арқылы ашу
 </a>
 </div>
-Ақсу қаласы<br>
-Ресторан «Престиж»
-</div>
 </div>
 
-<!-- 5 Экран -->
+<!-- HOSTS -->
 <div class="section">
 <div class="box">
 <h2>Той иелері</h2>
@@ -321,22 +227,31 @@ margin-top:15px;
 </div>
 </div>
 
-<!-- 6 Экран -->
+<!-- RSVP -->
 <div class="section">
 <div class="box">
 <h2>Қатысуыңызды растаңыз</h2>
-<input type="text" placeholder="Атыңыз" style="width:90%;padding:10px;"><br>
-<label><input type="radio" name="rsvp"> Әрине, келемін</label><br>
-<label><input type="radio" name="rsvp"> Келе алмаймын</label><br>
-<label><input type="radio" name="rsvp"> Жұбайыммен келемін</label><br>
+<input type="text" placeholder="Атыңыз" style="width:90%;padding:15px;font-size:20px;"><br>
+<label style="font-size:22px;"><input type="radio" name="rsvp"> Әрине, келемін</label><br>
+<label style="font-size:22px;"><input type="radio" name="rsvp"> Келе алмаймын</label><br>
+<label style="font-size:22px;"><input type="radio" name="rsvp"> Жұбайыммен келемін</label><br>
 <button>Жауап беру</button>
 </div>
 </div>
 
-<!-- Финал -->
+<!-- FINAL -->
 <div class="section">
-<h2>Келініздер тойымыздың қадірлі қонағы болыныздар!</h2>
+<div class="final">
+Келініздер тойымыздың қадірлі қонағы болыныздар!
 </div>
+</div>
+
+<!-- MUSIC -->
+<audio id="music" loop>
+<source src="music.mp3.mp3" type="audio/mpeg">
+</audio>
+
+<div class="music-btn" onclick="toggleMusic()">🎵</div>
 
 <script>
 const sections=document.querySelectorAll(".section");
@@ -352,54 +267,18 @@ entry.target.classList.add("visible");
 sections.forEach(section=>{
 observer.observe(section);
 });
-</script>
 
-</body>
-</html>
-Ақсу қаласы<br>
-Ресторан «Престиж»
-</div>
-</div>
-
-<!-- 5 Экран -->
-<div class="section">
-<div class="box">
-<h2>Той иелері</h2>
-Серик – Рауза
-</div>
-</div>
-
-<!-- 6 Экран -->
-<div class="section">
-<div class="box">
-<h2>Қатысуыңызды растаңыз</h2>
-<input type="text" placeholder="Атыңыз" style="width:90%;padding:10px;"><br>
-<label><input type="radio" name="rsvp"> Әрине, келемін</label><br>
-<label><input type="radio" name="rsvp"> Келе алмаймын</label><br>
-<label><input type="radio" name="rsvp"> Жұбайыммен келемін</label><br>
-<button>Жауап беру</button>
-</div>
-</div>
-
-<!-- Финал -->
-<div class="section">
-<h2>Келініздер тойымыздың қадірлі қонағы болыныздар!</h2>
-</div>
-
-<script>
-const sections=document.querySelectorAll(".section");
-
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add("visible");
+let playing=false;
+function toggleMusic(){
+let music=document.getElementById("music");
+if(!playing){
+music.play();
+playing=true;
+}else{
+music.pause();
+playing=false;
 }
-});
-},{threshold:0.3});
-
-sections.forEach(section=>{
-observer.observe(section);
-});
+}
 </script>
 
 </body>

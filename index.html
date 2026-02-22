@@ -18,7 +18,7 @@ color:#5a4a42;
 overflow-x:hidden;
 }
 
-/* ===== ОРНАМЕНТЫ ===== */
+/* ===== ОРНАМЕНТ ===== */
 .ornament-top{
 position:fixed;
 top:0;
@@ -26,9 +26,8 @@ left:0;
 width:260px;
 opacity:0.35;
 pointer-events:none;
-z-index:1;
+z-index:2;
 }
-
 .ornament-bottom{
 position:fixed;
 bottom:0;
@@ -37,10 +36,10 @@ width:260px;
 opacity:0.35;
 transform:rotate(180deg);
 pointer-events:none;
-z-index:1;
+z-index:2;
 }
 
-/* ===== HERO VIDEO ===== */
+/* ===== HERO ===== */
 .hero{
 position:relative;
 height:100vh;
@@ -51,17 +50,13 @@ text-align:center;
 color:white;
 overflow:hidden;
 }
-
 .hero video{
 position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
+top:0;left:0;
+width:100%;height:100%;
 object-fit:cover;
 z-index:-2;
 }
-
 .hero::after{
 content:"";
 position:absolute;
@@ -69,13 +64,11 @@ top:0;left:0;right:0;bottom:0;
 background:rgba(0,0,0,0.5);
 z-index:-1;
 }
-
 h1{
 font-family:'Parisienne', cursive;
 font-size:110px;
 margin:0;
 }
-
 .hero p{
 font-size:32px;
 margin-top:10px;
@@ -96,14 +89,12 @@ transition:1.2s;
 font-size:26px;
 line-height:1.8;
 position:relative;
-z-index:2;
+z-index:3;
 }
-
 .section.visible{
 opacity:1;
 transform:translateY(0);
 }
-
 .box{
 background:white;
 padding:50px;
@@ -111,24 +102,26 @@ border-radius:35px;
 box-shadow:0 15px 40px rgba(0,0,0,0.07);
 max-width:800px;
 }
-
 h2{
 font-size:48px;
 margin-bottom:35px;
 }
 
 /* ===== КАЛЕНДАРЬ ===== */
+.month-title{
+font-size:38px;
+margin-bottom:20px;
+color:#b48a5a;
+}
 .calendar table{
 width:100%;
 max-width:600px;
 border-collapse:collapse;
 font-size:32px;
 }
-
 .calendar td,.calendar th{
 padding:16px;
 }
-
 .highlight{
 background:#b48a5a;
 color:white;
@@ -147,7 +140,6 @@ font-size:24px;
 cursor:pointer;
 margin-top:25px;
 }
-
 .map-btn{
 display:inline-block;
 background:#2BB673;
@@ -179,33 +171,40 @@ box-shadow:0 5px 20px rgba(0,0,0,0.2);
 z-index:10;
 }
 
-.final{
-font-size:44px;
-font-weight:600;
+/* ===== PNG ЛЕПЕСТКИ ===== */
+.petal{
+position:fixed;
+top:-60px;
+pointer-events:none;
+z-index:4;
+animation:fall linear infinite;
+}
+@keyframes fall{
+0%{transform:translateY(-60px) translateX(0px) rotate(0deg);}
+50%{transform:translateY(50vh) translateX(30px) rotate(180deg);}
+100%{transform:translateY(110vh) translateX(-30px) rotate(360deg);}
 }
 
-/* ===== АДАПТАЦИЯ ДЛЯ ТЕЛЕФОНОВ ===== */
+/* ===== АДАПТАЦИЯ ===== */
 @media (max-width:768px){
-
 h1{font-size:60px;}
 h2{font-size:32px;}
 .section{font-size:20px;padding:40px 20px;}
 .calendar table{font-size:22px;}
-.final{font-size:28px;}
-.box{padding:30px;}
+.month-title{font-size:26px;}
 .hero p{font-size:22px;}
-
+.box{padding:30px;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- ОРНАМЕНТЫ -->
+<!-- Орнамент -->
 <img src="ornament.png" class="ornament-top">
 <img src="ornament.png" class="ornament-bottom">
 
-<!-- VIDEO -->
+<!-- Видео -->
 <div class="hero">
 <video autoplay muted loop playsinline>
 <source src="video.mp4" type="video/mp4">
@@ -216,20 +215,20 @@ h2{font-size:32px;}
 </div>
 </div>
 
-<!-- ТЕКСТ -->
+<!-- Текст -->
 <div class="section">
 <div class="box">
-<h2>Құрметті ағайын-туыс, құда-жекжат, дос-жаран, көршілер, әріптестер, жерлестер!</h2>
-Сіздерді біздің отбасымызда көптен күткен қуанышты тойымыздың құрметті қонағы болуға шын жүректен шақырамыз.<br><br>
-Ақ дастархан жайылып, ән мен күй шырқалатын мерекелік кешімізге келіп, қуанышымызды бірге бөліссеңіздер.
+<h2>Құрметті ағайын-туыс, құда-жекжат, дос-жаран!</h2>
+Сіздерді біздің отбасымызда өтетін қуанышты тойымыздың құрметті қонағы болуға шын жүректен шақырамыз.<br><br>
+Ақ дастархан жайылып, ән мен күй шырқалатын мерекелік кешімізге келіп, қуанышымызды бірге бөліссеңіздер екен дейміз.
 </div>
 </div>
 
-<!-- КАЛЕНДАРЬ -->
+<!-- Календарь -->
 <div class="section">
 <h2>Той күні</h2>
-<div class="calendar">
 <h3 class="month-title">Шілде 2026</h3>
+<div class="calendar">
 <table>
 <tr>
 <th>Дс</th><th>Сс</th><th>Ср</th><th>Бс</th><th>Жм</th><th>Сб</th><th>Жс</th>
@@ -255,7 +254,7 @@ h2{font-size:32px;}
 </div>
 </div>
 
-<!-- МЕКЕНЖАЙ -->
+<!-- Локация -->
 <div class="section">
 <div class="box">
 <h2>Мекенжай</h2>
@@ -267,7 +266,7 @@ h2{font-size:32px;}
 </div>
 </div>
 
-<!-- ТОЙ ИЕЛЕРІ -->
+<!-- Той иелері -->
 <div class="section">
 <div class="box">
 <h2>Той иелері</h2>
@@ -275,33 +274,21 @@ h2{font-size:32px;}
 </div>
 </div>
 
-<!-- RSVP -->
+<!-- Финал -->
 <div class="section">
-<div class="box">
-<h2>Қатысуыңызды растаңыз</h2>
-<input type="text" placeholder="Атыңыз" style="width:90%;padding:18px;font-size:22px;"><br>
-<label><input type="radio" name="rsvp"> Әрине, келемін</label><br>
-<label><input type="radio" name="rsvp"> Келе алмаймын</label><br>
-<label><input type="radio" name="rsvp"> Жұбайыммен келемін</label><br>
-<button>Жауап беру</button>
-</div>
-</div>
-
-<!-- ФИНАЛ -->
-<div class="section">
-<div class="final">
+<div style="font-size:40px;font-weight:600;">
 Келініздер тойымыздың қадірлі қонағы болыныздар!
 </div>
 </div>
 
-<!-- MUSIC -->
+<!-- Музыка -->
 <audio id="music" loop>
 <source src="music.mp3" type="audio/mpeg">
 </audio>
-
 <div class="music-btn" onclick="toggleMusic()">🎵</div>
 
 <script>
+/* Плавное появление секций */
 const sections=document.querySelectorAll(".section");
 const observer=new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
@@ -312,23 +299,29 @@ entry.target.classList.add("visible");
 },{threshold:0.3});
 sections.forEach(section=>observer.observe(section));
 
+/* Музыка при первом касании */
 let music=document.getElementById("music");
 let started=false;
-
-/* Автозапуск при первом касании */
 document.addEventListener("click", function(){
 if(!started){
 music.play();
 started=true;
 }
 });
-
 function toggleMusic(){
-if(music.paused){
-music.play();
-}else{
-music.pause();
+if(music.paused){music.play();}else{music.pause();}
 }
+
+/* МНОГО PNG ЛЕПЕСТКОВ */
+for(let i=0;i<55;i++){
+let petal=document.createElement("img");
+petal.src="petal.png";
+petal.className="petal";
+petal.style.left=Math.random()*100+"vw";
+petal.style.width=(18+Math.random()*22)+"px";
+petal.style.animationDuration=(6+Math.random()*8)+"s";
+petal.style.opacity=(0.6+Math.random()*0.4);
+document.body.appendChild(petal);
 }
 </script>
 
